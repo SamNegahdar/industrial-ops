@@ -1,0 +1,40 @@
+spring:
+  application:
+    name: order-workflow-service
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/ios_order
+    username: postgres
+    password: postgres
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate.format_sql: true
+
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+
+  task:
+    scheduling:
+      pool:
+        size: 1
+
+server:
+  port: 8081
+
+logging:
+  level:
+    root: INFO
+    org.springframework.kafka: INFO
+    com.ios.order: DEBUG
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics

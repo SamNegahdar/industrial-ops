@@ -1,0 +1,52 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+      - id: order-service
+        uri: http://order-service:8080
+        predicates:
+        - Path=/orders/**
+        filters:
+        - StripPrefix=1
+      - id: inventory-service
+        uri: http://inventory-service:8080
+        predicates:
+        - Path=/inventory/**
+        filters:
+        - StripPrefix=1
+      - id: production-service
+        uri: http://production-service:8080
+        predicates:
+        - Path=/production/**
+        filters:
+        - StripPrefix=1
+      - id: warehouse-service
+        uri: http://warehouse-service:8080
+        predicates:
+        - Path=/warehouse/**
+        filters:
+        - StripPrefix=1
+      - id: shipping-service
+        uri: http://shipping-service:8080
+        predicates:
+        - Path=/shipping/**
+        filters:
+        - StripPrefix=1
+      - id: billing-service
+        uri: http://billing-service:8080
+        predicates:
+        - Path=/billing/**
+        filters:
+        - StripPrefix=1
+      - id: notification-service
+        uri: http://notification-service:8080
+        predicates:
+        - Path=/notifications/**
+        filters:
+        - StripPrefix=1
+      - id: chat-service
+        uri: http://chat-service:8080
+        predicates:
+        - Path=/chat/**
+        filters:
+        - StripPrefix=1

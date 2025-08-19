@@ -1,0 +1,5 @@
+apiVersion: v2
+name: industrial-ops
+version: 0.1.0
+description: Industrial Ops Suite
+type: application

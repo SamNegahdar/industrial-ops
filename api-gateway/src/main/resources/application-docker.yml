@@ -1,0 +1,19 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://postgres:5432/apigateway
+    username: postgres
+    password: postgres
+  cloud:
+    gateway:
+      routes:
+      - id: chat-service
+        uri: http://chat-service:8080
+        predicates:
+        - Path=/chat/**
+        filters:
+        - StripPrefix=1
+
+
+spring:
+  config:
+    import: optional:classpath:routes.yml

@@ -1,0 +1,1 @@
+-- DDL placeholder for notification-service

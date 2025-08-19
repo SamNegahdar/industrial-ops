@@ -1,0 +1,9 @@
+CREATE TABLE IF NOT EXISTS wh_tasks(
+  id UUID PRIMARY KEY,
+  type VARCHAR(16) NOT NULL,
+  ref VARCHAR(64) NOT NULL,
+  sku VARCHAR(64) NOT NULL,
+  quantity INT NOT NULL CHECK (quantity>0),
+  status VARCHAR(16) NOT NULL,
+  created_at TIMESTAMP NOT NULL DEFAULT now()
+);

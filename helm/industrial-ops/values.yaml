@@ -1,0 +1,10 @@
+gateway:
+  image: ghcr.io/you/api-gateway:1.0.0
+  replicas: 2
+auth:
+  image: ghcr.io/you/auth-server:1.0.0
+tls:
+  enabled: true
+  secretName: ops-tls
+ingress:
+  host: ops.local
