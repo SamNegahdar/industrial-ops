@@ -39,11 +39,10 @@ public class OrderController {
     public ResponseEntity<Void> changeStatus(@RequestHeader(name = "X-Tenant-Id", required = false, defaultValue = "t1") String tenant,
                                              @PathVariable String id,
                                              @Valid @RequestBody ChangeStatusRequest req) {
-        if (req.targetStatus() == OrderStatus.CONFIRMED) {
+        if (req.targetStatus() == OrderStatus.CONFIRMED)
             handler.handle(ConfirmOrderCommand.builder().commandId("cmd-" + System.nanoTime()).tenantId(tenant).orderId(id).build());
-        } else {
+        else
             handler.handle(ChangeOrderStatusCommand.builder().commandId("cmd-" + System.nanoTime()).tenantId(tenant).orderId(id).targetStatus(req.targetStatus()).build());
-        }
         return ResponseEntity.noContent().build();
     }
 }
