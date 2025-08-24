@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.Instant;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -113,7 +114,7 @@ public class OrderCommandHandler {
     private void persistOutbox(Object evt) {
         try {
             String payload = objectMapper.writeValueAsString(evt);
-            outboxRepository.save(OutboxEventEntity.pending("order.events.v1", payload));
+            outboxRepository.save(OutboxEventEntity.pending("order.events.v1", payload , UUID.randomUUID().toString()));
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

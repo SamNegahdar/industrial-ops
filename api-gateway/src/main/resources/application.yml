@@ -6,6 +6,38 @@ spring:
     name: api-gateway
   main:
     web-application-type: reactive
+  cloud:
+    gateway:
+      routes:
+        - id: orders
+          uri: http://localhost:8081
+          predicates:
+            - Path=/api/orders/**
+
+        - id: billing
+          uri: http://localhost:8087
+          predicates:
+            - Path=/api/billing/**
+
+        - id: inventory
+          uri: http://localhost:8083
+          predicates:
+            - Path=/api/inventory/**
+
+        - id: production
+          uri: http://localhost:8084
+          predicates:
+            - Path=/api/production/**
+
+        - id: warehouse
+          uri: http://localhost:8085
+          predicates:
+            - Path=/api/warehouse/**
+
+        - id: shipping
+          uri: http://localhost:8086
+          predicates:
+            - Path=/api/shipping/**
 
 management:
   endpoints:
