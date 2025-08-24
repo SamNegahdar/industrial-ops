@@ -6,4 +6,6 @@ import lombok.*;
 public class OrderLine {
   private String sku; // کد یکتای کالا
   private int qty;    // تعداد آیتم
+
+
 }
